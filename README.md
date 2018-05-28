@@ -25,7 +25,7 @@ A* search is an informed search algorithm that uses a priority queue for its fro
 
 In this case, using Manhatten distance as the expected cost to reach the goal acts as though the player can pluck tiles from board and move them overhead from row to row and column to column and place them their final position regardless of whether another tile already occupies that spot. It ignores the complexity that comes with having to manuever tiles around one another and therefore will almost always understate the cost to reach the goal. However, as long as the heuristic never overstates the cost of reaching the goal from a given position, it will always provide an optimal solution. 
 
-Stated another way, an admissible heuristic must be optimistic. Heuristics that closely approximate the actual cost of reaching the goal from a given state will allow the algorithm to explore fewer nodes overall. All else equal this will result in an optimal solution reached in less time, but one must always consider the time it takes to compute the value of a heuristic function.
+Stated another way, an admissible heuristic must be optimistic. Heuristics that closely approximate the actual cost of reaching the goal from a given state will allow the algorithm to explore fewer nodes overall. All else equal this will result in an optimal solution reached in less time, but one must consider the time it takes to compute the value of a heuristic function.
 
 <p align="center">
   <img width="500" height="300" src="https://s3.amazonaws.com/sliding-puzzle/astar_visual.png">

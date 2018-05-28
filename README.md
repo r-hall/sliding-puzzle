@@ -46,5 +46,5 @@ When executed, the program will write to a file called output.txt, containing th
 	
 	6. max_frontier_size: the maximum number of nodes in the frontier reached in the lifetime of the algorithm
 	
-	7. running_time: the total time taken by the algorithm to find the goal 
+	7. running_time: the total time taken (in seconds) by the algorithm to find the goal 
 	

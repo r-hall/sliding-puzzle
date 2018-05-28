@@ -370,7 +370,10 @@ def search(method, board):
     # set up frontier based upon search method and add starting board
     frontier = initialize_frontier(method, board)
     # while there are boards in the frontier, continue to explore
+    max_frontier_size = 0
     while frontier:
+        if len(frontier) > max_frontier_size:
+            max_frontier_size = len(frontier)
         # get next board to be explored from frontier
         state = retrieve_state(method, frontier)
         # check to see if board matches the goal board
@@ -379,11 +382,11 @@ def search(method, board):
             # max_ram_usage = resource.getrusage(resource.RUSAGE_SELF)[2]
             # get the path from start to goal, the cost of the path
             path_to_goal, cost_of_path = evaluate(board, parents)
-            return (path_to_goal, cost_of_path, nodes_expanded, max_search_depth, total_time) 
+            return (path_to_goal, cost_of_path, nodes_expanded, max_search_depth, total_time, max_frontier_size) 
         nodes_expanded, entry_count, max_search_depth = update_frontier(method, state, parents, frontier, frontier_dict, max_search_depth, explored, astar_frontier_dict, nodes_expanded, entry_count)
     
     
-def output(method, path_to_goal, cost_of_path, nodes_expanded, max_search_depth, total_time):
+def output(method, path_to_goal, cost_of_path, nodes_expanded, max_search_depth, total_time, max_frontier_size):
     """
     Writes relevant metrics to output file
     """
@@ -393,6 +396,7 @@ def output(method, path_to_goal, cost_of_path, nodes_expanded, max_search_depth,
         f.write('path_length: ' + str(cost_of_path) + '\n')
         f.write('nodes_expanded: ' + str(nodes_expanded) + '\n')
         f.write('max_search_depth: ' + str(max_search_depth) + '\n')
+        f.write('max_frontier_size: ' + str(max_frontier_size) + '\n')
         f.write('running_time: ' + str(total_time) + '\n')
         f.write('\n')
         
@@ -406,8 +410,8 @@ def test_program(method, test_board):
     dim = int(math.sqrt(len(test_board)))
     test_board = np.asarray(test_board).reshape(dim, dim)
     board = Board(test_board)
-    path_to_goal, cost_of_path, nodes_expanded, max_search_depth, total_time = search(method, board)
-    output(method, path_to_goal, cost_of_path, nodes_expanded, max_search_depth, total_time)
+    path_to_goal, cost_of_path, nodes_expanded, max_search_depth, total_time, max_frontier_size = search(method, board)
+    output(method, path_to_goal, cost_of_path, nodes_expanded, max_search_depth, total_time, max_frontier_size)
 
 test_program('bfs', [0,8,7,6,5,4,3,2,1])
 test_program('dfs', [0,8,7,6,5,4,3,2,1])

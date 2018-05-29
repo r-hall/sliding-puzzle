@@ -1,5 +1,5 @@
 # Overview #
-Implemented BFS, DFS, A* search algorithms to solve an 8 board sliding puzzle and recorded relevant statistics for time and memory complexity in order to assess algorithm performance. Refer to https://en.wikipedia.org/wiki/Sliding_puzzle for an overview of the sliding puzzle game.
+Implemented BFS, DFS, A* search algorithms to solve an 8-tile sliding puzzle and recorded relevant statistics for time and memory complexity in order to assess algorithm performance. Refer to https://en.wikipedia.org/wiki/Sliding_puzzle for an overview of the sliding puzzle game.
 
 # Theory #
 Breadth-first search (BFS) and depth-first search (DFS) are two instances of uninformed search algorithms, while A* search is an informed search algorithm that uses a heuristic to estimate the total cost from the current state to the goal state. The heuristic allows the algorithm to be more selective when choosing the next state to explore and to explore fewer nodes overall in the search tree.
